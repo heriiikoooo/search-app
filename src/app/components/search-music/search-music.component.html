@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Sample Data from GitHub</h2>
+        <div *ngFor="let sample of samples">
+            <h3>{{sample.title}}</h3>
+            <p>{{sample.body}}</p>
+        </div>
+        
+        <hr>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 mb-3">
+        <div class="input-group">
+            <input type="text" class="searchSong form-control" placeholder="Search a song or a artist from iTunes" [formControl]="searchField">
+            <!-- <span class="input-group-btn">
+                <button class="btn btn-primary ml-3" type="button"(click)="doSearch(search.value)">Search</button>
+            </span> -->
+        </div>
+  
+          <!-- <form class="form-inline float-right">
+              <div class="form-group">
+                <input type="search"
+                        class="form-control"
+                        placeholder="Search a song or a artist from iTunes"
+                        #search>
+              </div>
+              <button class="btn btn-primary ml-3"type="button" (click)="doSearch(search.value)">Search</button>
+            </form> -->
+      </div>
+    </div>
+      
+    <div class="text-center">
+      <p class="lead" *ngIf="loading">Loading...</p>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item d-flex" *ngFor="let use of results | async">
+  
+        <img src="{{ use.artworkUrl30}}" style="width:auto; height:auto;"/>
+  
+        <a target="_blank" class="ml-5"
+            href="{{use.trackViewUrl}}">{{ use.trackName }}
+        </a>
+        <p class="pl-5">~ {{use.artistName}}</p>
+      </li>
+    </ul>
+  </div>
+   
+  
